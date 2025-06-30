@@ -24,6 +24,6 @@ int main(void) {
   }
 
   // Print counter
-  std::cout << counter;
+  std::cout << counter << '\n';
   return 0;
 }
