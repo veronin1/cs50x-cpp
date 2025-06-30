@@ -3,7 +3,7 @@
 int get_height(void);
 void print_pyramid(int n);
 
-int main() {
+int main(void) {
   const int n = get_height();
   print_pyramid(n);
 }
