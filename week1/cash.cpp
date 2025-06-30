@@ -1,3 +1,4 @@
+#include <array>
 #include <iostream>
 
 int main(void) {
@@ -10,26 +11,19 @@ int main(void) {
     return 1;
   }
 
-  // Greedy algorithm
+  // Create array
+  std::array<int, 4> coins = {25, 10, 5, 1};
+
+  // Greedy algo
   int counter = 0;
-  while (change >= 25) {
-    counter++;
-    change -= 25;
-  }
-  while (change >= 10) {
-    counter++;
-    change -= 10;
-  }
-  while (change >= 5) {
-    counter++;
-    change -= 5;
-  }
-  while (change >= 1) {
-    counter++;
-    change -= 1;
+  for (int i = 0, n = coins.size(); i < n; i++) {
+    while (change >= coins[i]) {
+      counter++;
+      change -= coins[i];
+    }
   }
 
-  // Print
+  // Print counter
   std::cout << counter;
   return 0;
 }
