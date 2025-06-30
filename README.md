@@ -13,6 +13,6 @@ This repo contains my translations of CS50x C projects into C++. The goal is to 
 Compile with any C++ compiler. For example:
 
 ```sh
-g++ week1/mario.cpp -o mario
-./mario
+g++ week1/mario-less.cpp -o mario-less
+./mario-less
 ```
