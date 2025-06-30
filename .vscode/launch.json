@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
-      "cwd": "/home/goblin/Programming/DSA-Robert",
-      "program": "/home/goblin/Programming/DSA-Robert/build/Debug/outDebug",
+      "cwd": "/home/goblin/Programming/CS50x in C++",
+      "program": "/home/goblin/Programming/CS50x in C++/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
