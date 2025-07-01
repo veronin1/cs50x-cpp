@@ -46,9 +46,11 @@ int compute_score(std::string word) {
     // Uppercase string (easier index)
     transform(word.begin(), word.end(), word.begin(), ::toupper);
 
-    for (int i = 0, n = word.length(); i < n; i++) {
-        int index = word[i] - 'A';
-        score += POINTS[index];
+    for (char c : word) {
+        if (c >= 'A' && c <= 'Z') {
+            int index = c - 'A';
+            score += POINTS[index];
+        }
     }
     return score;
 }
