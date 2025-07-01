@@ -15,8 +15,10 @@ int main(void) {
         std::cerr << "Invalid text";
         std::cin.clear();
         std::cin.ignore(10000, '\n');
+        return 1;
     }
-    std::pair<float, float> LS = getLS(text);
+
+    auto LS = getLS(text);
     float index = calculateIndex(LS.first, LS.second);
 
     if (index < 1) {
@@ -26,6 +28,7 @@ int main(void) {
     } else {
         std::cout << "Grade " << std::fixed << std::setprecision(0) << index;
     }
+    return 0;
 }
 
 std::pair<float, float> getLS(std::string text) {
