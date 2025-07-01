@@ -6,20 +6,38 @@
 int get_valid_argument(int argc, char *argv[]);
 std::string encrypt(std::string plaintext, int key);
 
-int main(int argc, char *argv[]) {}
+int main(int argc, char *argv[]) {
+    int key = get_valid_argument(argc, argv);
+
+    if (key == -1) {
+        return 1;
+    }
+
+    std::string plaintext;
+    std::cout << "plaintext: ";
+    if (!(std::getline(std::cin, plaintext))) {
+        std::cerr << "Invalid text";
+        std::cin.clear();
+        std::cin.ignore(10000, '\n');
+        return 1;
+    }
+
+    std::string ciphertext = encrypt(plaintext, key);
+    std::cout << ciphertext;
+}
 
 int get_valid_argument(int argc, char *argv[]) {
     std::string usage = "Usage: ./caesar key";
 
     if (argc != 2) {
         std::cout << usage;
-        return 1;
+        return -1;
     }
 
     for (int i = 0, n = strlen(argv[1]); i < n; i++) {
         if (!(std::isdigit(argv[1][i]))) {
             std::cout << usage;
-            return 1;
+            return -1;
         }
     }
 
@@ -27,7 +45,7 @@ int get_valid_argument(int argc, char *argv[]) {
 
     if (argument < 0) {
         std::cout << usage;
-        return 1;
+        return -1;
     }
 
     return argument;
