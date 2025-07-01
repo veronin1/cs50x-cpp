@@ -9,7 +9,7 @@ float calculateIndex(float L, float S);
 int main(void) {
     std::string text;
     std::cout << "Text: ";
-    if (!(std::cin >> text)) {
+    if (!(std::getline(std::cin, text))) {
         std::cerr << "Invalid text";
         std::cin.clear();
         std::cin.ignore(10000, '\n');
@@ -36,7 +36,7 @@ std::pair<float, float> getLS(std::string text) {
             letters++;
         } else if (isspace(c)) {
             words++;
-        } else if (text[c] == '.' || text[c] == '?' || text[c] == '!') {
+        } else if (c == '.' || c == '?' || c == '!') {
             sentences++;
         }
     }
@@ -46,7 +46,7 @@ std::pair<float, float> getLS(std::string text) {
 
     if (sentences != 0 && words != 0 && letters != 0) {
         L = ((float)(letters) / words) * 100.0f;
-        S = ((float)(words) / sentences) * 100.0f;
+        S = ((float)(sentences) / words) * 100.0f;
     }
 
     return std::make_pair(L, S);
