@@ -1,6 +1,6 @@
 # CS50x C++ Translations
 
-This repo contains my translations of CS50x C projects into C++. The goal is to redo the assignments using C++ features like classes and STL where it makes sense, while keeping the original logic intact.
+This repo contains my translations of CS50x C projects into C++. The goal is to redo the assignments using C++ features where it makes sense, while keeping the original logic intact - this is to deepen my understanding and learning of C++.
 
 ## Structure
 
