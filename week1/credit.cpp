@@ -1,20 +1,23 @@
 #include <iostream>
+#include <string>
 
 long long get_credit_number(void);
-bool calculate_luhn(long long credit_card);
+bool calculate_luhn(long long card);
+std::string identify_card_network(long long card);
 
 int main(void) {
-    long long credit_card = get_credit_number();
-    if (credit_card == 0) {
+    long long card = get_credit_number();
+    if (card == 0) {
         std::cerr << "No valid credit card.\n";
         return 1;
     }
 
+    std::string network = identify_card_network(card);
     return 0;
 }
 
 long long get_credit_number(void) {
-    long long credit_card = 0LL;
+    long long card = 0LL;
 
     /*
      * Get number, if cin stream fails
@@ -23,18 +26,18 @@ long long get_credit_number(void) {
 
     do {
         std::cout << "Number: ";
-        if (!(std::cin >> credit_card)) {
+        if (!(std::cin >> card)) {
             std::cerr << "Invalid number";
             std::cin.clear();
             std::cin.ignore(10000, '\n');
-            credit_card = 0;
+            card = 0;
         }
-    } while (credit_card <= 0);
-    return credit_card;
+    } while (card <= 0);
+    return card;
 }
 
-bool calculate_luhn(long long credit_card) {
-    long long n = credit_card;
+bool calculate_luhn(long long card) {
+    long long n = card;
     int total = 0;
     int counter = 0;
     // Loop through all digits
@@ -75,4 +78,9 @@ bool calculate_luhn(long long credit_card) {
     }
 
     return false;
+}
+
+std::string identify_card_network(long long card) {
+    return "Hi";
+    return "bye";
 }
