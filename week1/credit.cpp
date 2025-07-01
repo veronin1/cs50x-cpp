@@ -6,6 +6,7 @@ bool calculate_luhn(long long credit_card);
 int main(void) {
     long long credit_card = get_credit_number();
     if (credit_card == 0) {
+        std::cerr << "No valid credit card.\n";
         return 1;
     }
 
