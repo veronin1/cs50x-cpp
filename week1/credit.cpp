@@ -20,11 +20,6 @@ int main(void) {
 long long get_credit_number(void) {
     long long card = 0LL;
 
-    /*
-     * Get number, if cin stream fails
-     * clear error flag and skip to newline
-     */
-
     do {
         std::cout << "Number: ";
         if (!(std::cin >> card)) {
@@ -41,44 +36,21 @@ bool calculate_luhn(long long card) {
     long long n = card;
     int total = 0;
     int counter = 0;
-    // Loop through all digits
+
     while (n > 0) {
-        // Iterate on each loop
         counter++;
-
-        // process last digit
-        int last_digit = (int)(n % 10);
-
-        // remove last digit
+        int last_digit = n % 10;
         n /= 10;
 
-        /*
-         * If counter is even, double last_digit.
-         * If doubled value is greater than 9, add the sum
-         * of its digits to total. Otherwise, add last_digit
-         * directly to total.
-         * If counter is odd, add last_digit to total.
-         */
         if (counter % 2 == 0) {
             last_digit *= 2;
-
             if (last_digit > 9) {
-                int tens = last_digit % 10;
-                int ones = last_digit / 10;
-                total += tens + ones;
-            } else {
-                total += last_digit;
+                last_digit -= 9;
             }
-        } else {
-            total += last_digit;
         }
+        total += last_digit;
     }
-
-    if (total % 10 == 0) {
-        return true;
-    }
-
-    return false;
+    return (total % 10 == 0);
 }
 
 std::string identify_card_network(long long card) {
