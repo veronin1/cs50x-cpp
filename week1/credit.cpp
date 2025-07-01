@@ -39,22 +39,24 @@ bool calculate_luhn(long long credit_card) {
         // Iterate on each loop
         counter++;
 
-        // Remove last digit
+        // process last digit
+        int last_digit = (int)(n % 10);
+
+        // remove last digit
         n /= 10;
 
         // Math
-        int last_digit = (int)(n % 10);
         if (counter % 2 == 0) {
             last_digit *= 2;
 
             if (last_digit > 9) {
-                int ones = (last_digit / 10) % 10;
-                int tens = (last_digit / 10) % 100;
-                total += ones;
-                total += tens;
+                int tens = last_digit % 10;
+                int ones = last_digit / 10;
+                total += tens + ones;
             }
+        } else {
+            total += last_digit;
         }
-        total += last_digit;
     }
 
     std::cout << total << '\n';
