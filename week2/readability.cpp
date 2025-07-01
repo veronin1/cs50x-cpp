@@ -1,4 +1,6 @@
 #include <cctype>
+#include <iomanip>
+#include <ios>
 #include <iostream>
 #include <string>
 #include <utility>
@@ -22,7 +24,7 @@ int main(void) {
     } else if (index > 16) {
         std::cout << "Grade 16+";
     } else {
-        std::cout << "Grade " << index;
+        std::cout << "Grade " << std::fixed << std::setprecision(0) << index;
     }
 }
 
