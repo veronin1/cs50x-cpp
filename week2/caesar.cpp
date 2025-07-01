@@ -3,6 +3,9 @@
 #include <iostream>
 #include <string>
 
+int get_valid_argument(int argc, char *argv[]);
+std::string encrypt(std::string plaintext, int key);
+
 int main(int argc, char *argv[]) {}
 
 int get_valid_argument(int argc, char *argv[]) {
@@ -28,4 +31,24 @@ int get_valid_argument(int argc, char *argv[]) {
     }
 
     return argument;
+}
+
+std::string encrypt(std::string plaintext, int key) {
+    std::string ciphertext;
+
+    for (int i = 0, n = plaintext.length(); i < n; i++) {
+        char current_char = plaintext[i];
+
+        if (std::isalpha(current_char)) {
+            if (std::isupper(current_char)) {
+                ciphertext[i] = (plaintext[i] - 'A' + key) % 26 + 'A';
+            } else if (std::islower(current_char)) {
+                ciphertext[i] = (plaintext[i] - 'a' + key) % 26 + 'a';
+            } else {
+                ciphertext[i] = current_char;
+            }
+        }
+    }
+
+    return ciphertext;
 }
