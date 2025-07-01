@@ -3,7 +3,7 @@
 #include <string>
 #include <utility>
 
-std::pair<int, int> getLS(std::string text);
+std::pair<float, float> getLS(std::string text);
 float calculateIndex(float L, float S);
 
 int main(void) {
@@ -14,7 +14,7 @@ int main(void) {
         std::cin.clear();
         std::cin.ignore(10000, '\n');
     }
-    std::pair<int, int> LS = getLS(text);
+    std::pair<float, float> LS = getLS(text);
     float index = calculateIndex(LS.first, LS.second);
 
     if (index < 1) {
@@ -26,7 +26,7 @@ int main(void) {
     }
 }
 
-std::pair<int, int> getLS(std::string text) {
+std::pair<float, float> getLS(std::string text) {
     int letters = 0;
     int words = 1;
     int sentences = 0;
@@ -41,8 +41,13 @@ std::pair<int, int> getLS(std::string text) {
         }
     }
 
-    int L = (letters / words) * 100;
-    int S = (words / sentences) * 100;
+    float S = 0.0f;
+    float L = 0.0f;
+
+    if (sentences != 0 && words != 0 && letters != 0) {
+        L = ((float)(letters) / words) * 100.0f;
+        S = ((float)(words) / sentences) * 100.0f;
+    }
 
     return std::make_pair(L, S);
 }
