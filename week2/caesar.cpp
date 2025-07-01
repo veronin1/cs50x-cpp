@@ -62,9 +62,9 @@ std::string encrypt(std::string plaintext, int key) {
                 ciphertext.push_back(((current_char - 'A' + key) % 26) + 'A');
             } else if (std::islower(current_char)) {
                 ciphertext.push_back(((current_char - 'a' + key) % 26) + 'a');
-            } else {
-                ciphertext.push_back(current_char);
             }
+        } else {
+            ciphertext.push_back(current_char);
         }
     }
 
