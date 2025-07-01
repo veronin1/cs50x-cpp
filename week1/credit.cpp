@@ -13,6 +13,7 @@ int main(void) {
     }
 
     std::string network = identify_card_network(card);
+    std::cout << network;
     return 0;
 }
 
@@ -81,6 +82,31 @@ bool calculate_luhn(long long card) {
 }
 
 std::string identify_card_network(long long card) {
-    return "Hi";
-    return "bye";
+    bool valid = calculate_luhn(card);
+
+    if (!valid) {
+        return "INVALID\n";
+    }
+
+    long long temp = card;
+    int length = 0;
+    while (temp > 0) {
+        length++;
+        temp /= 10;
+    }
+
+    long long first_two_digits = card;
+    for (int i = 0; i < length - 2; i++) {
+        first_two_digits /= 10;
+    }
+
+    if (length == 15 && (first_two_digits == 34 || first_two_digits == 37)) {
+        return "AMERICAN EXPRESS\n";
+    } else if (length == 16 && (first_two_digits >= 51 && first_two_digits <= 55)) {
+        return "MASTERCARD\n";
+    } else if ((length == 13 || length == 16) && (first_two_digits / 10 == 4)) {
+        return "VISA\n";
+    } else {
+        return "INVALID\n";
+    }
 }
