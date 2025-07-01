@@ -59,11 +59,11 @@ std::string encrypt(std::string plaintext, int key) {
 
         if (std::isalpha(current_char)) {
             if (std::isupper(current_char)) {
-                ciphertext[i] = (plaintext[i] - 'A' + key) % 26 + 'A';
+                ciphertext.push_back(((current_char - 'A' + key) % 26) + 'A');
             } else if (std::islower(current_char)) {
-                ciphertext[i] = (plaintext[i] - 'a' + key) % 26 + 'a';
+                ciphertext.push_back(((current_char - 'a' + key) % 26) + 'a');
             } else {
-                ciphertext[i] = current_char;
+                ciphertext.push_back(current_char);
             }
         }
     }
