@@ -1,17 +1,23 @@
 #include <iostream>
 
 long long get_credit_number(void);
+bool calculate_luhn(long long credit_card);
 
 int main(void) {
     long long credit_card = get_credit_number();
     if (credit_card == 0) {
         return 1;
     }
+
+    calculate_luhn(credit_card);
     return 0;
 }
 
 long long get_credit_number(void) {
     long long credit_card = 0LL;
+
+    /* Get number, if cin stream fails
+    clear error flag and skip to newline*/
     do {
         std::cout << "Number: ";
         if (!(std::cin >> credit_card)) {
@@ -22,4 +28,40 @@ long long get_credit_number(void) {
         }
     } while (credit_card <= 0);
     return credit_card;
+}
+
+bool calculate_luhn(long long credit_card) {
+    long long n = credit_card;
+    int total = 0;
+    int counter = 0;
+    // Loop through all digits
+    while (n > 0) {
+        // Iterate on each loop
+        counter++;
+
+        // Remove last digit
+        n /= 10;
+
+        // Math
+        int last_digit = (int)(n % 10);
+        if (counter % 2 == 0) {
+            last_digit *= 2;
+
+            if (last_digit > 9) {
+                int ones = (last_digit / 10) % 10;
+                int tens = (last_digit / 10) % 100;
+                total += ones;
+                total += tens;
+            }
+        }
+        total += last_digit;
+    }
+
+    std::cout << total << '\n';
+    std::cout << total % 10;
+    if (total % 10 == 0) {
+        return true;
+    }
+
+    return false;
 }
