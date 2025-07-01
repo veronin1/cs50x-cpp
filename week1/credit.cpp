@@ -53,14 +53,14 @@ bool calculate_luhn(long long credit_card) {
                 int tens = last_digit % 10;
                 int ones = last_digit / 10;
                 total += tens + ones;
+            } else {
+                total += last_digit;
             }
         } else {
             total += last_digit;
         }
     }
 
-    std::cout << total << '\n';
-    std::cout << total % 10;
     if (total % 10 == 0) {
         return true;
     }
