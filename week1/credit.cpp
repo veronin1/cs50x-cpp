@@ -10,15 +10,17 @@ int main(void) {
         return 1;
     }
 
-    calculate_luhn(credit_card);
     return 0;
 }
 
 long long get_credit_number(void) {
     long long credit_card = 0LL;
 
-    /* Get number, if cin stream fails
-    clear error flag and skip to newline*/
+    /*
+     * Get number, if cin stream fails
+     * clear error flag and skip to newline
+     */
+
     do {
         std::cout << "Number: ";
         if (!(std::cin >> credit_card)) {
@@ -46,7 +48,13 @@ bool calculate_luhn(long long credit_card) {
         // remove last digit
         n /= 10;
 
-        // Math
+        /*
+         * If counter is even, double last_digit.
+         * If doubled value is greater than 9, add the sum
+         * of its digits to total. Otherwise, add last_digit
+         * directly to total.
+         * If counter is odd, add last_digit to total.
+         */
         if (counter % 2 == 0) {
             last_digit *= 2;
 
