@@ -1,0 +1,7 @@
+for every voter (i):
+    go through each rank (j):
+        set candidate_index to preferences[i][j]
+
+        if the candidate at candidate_index is NOT eliminated:
+            add 1 to that candidate's votes
+            stop checking this voter's list

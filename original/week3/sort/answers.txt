@@ -1,0 +1,11 @@
+sort1 uses: Bubble Sort
+
+How do you know?: It is quite good on small random lists (< 10000), and is faster on already sorted lists. It was also very slow on the long lists apart from the very long one that was sorted.
+
+sort2 uses: Merge Sort
+
+How do you know?: It was fastest in comparison to the others on all types of lists (reversed, sorted, and random). It is the fastest of the sorts O(n log n).
+
+sort3 uses: Selection Sort
+
+How do you know?: It has a similar speed on all inputs and gets slower the longer the list is, this is because it runs in O(n squared) and has to iterate over each of the n elements in the array and repeat it n times.

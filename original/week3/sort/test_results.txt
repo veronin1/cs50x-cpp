@@ -1,0 +1,162 @@
+running: sort1: random10000.txt
+
+real	0m0.172s
+user	0m0.172s
+sys	0m0.000s
+******
+running: sort1: random50000.txt
+
+real	0m6.325s
+user	0m6.268s
+sys	0m0.004s
+******
+running: sort1: random5000.txt
+
+real	0m0.040s
+user	0m0.039s
+sys	0m0.001s
+******
+running: sort1: reversed10000.txt
+
+real	0m0.197s
+user	0m0.196s
+sys	0m0.001s
+******
+running: sort1: reversed50000.txt
+
+real	0m4.861s
+user	0m4.836s
+sys	0m0.001s
+******
+running: sort1: reversed5000.txt
+
+real	0m0.055s
+user	0m0.054s
+sys	0m0.000s
+******
+running: sort1: sorted10000.txt
+
+real	0m0.003s
+user	0m0.003s
+sys	0m0.000s
+******
+running: sort1: sorted50000.txt
+
+real	0m0.007s
+user	0m0.007s
+sys	0m0.000s
+******
+running: sort1: sorted5000.txt
+
+real	0m0.001s
+user	0m0.001s
+sys	0m0.000s
+******
+running: sort2: random10000.txt
+
+real	0m0.004s
+user	0m0.003s
+sys	0m0.001s
+******
+running: sort2: random50000.txt
+
+real	0m0.018s
+user	0m0.018s
+sys	0m0.000s
+******
+running: sort2: random5000.txt
+
+real	0m0.004s
+user	0m0.002s
+sys	0m0.001s
+******
+running: sort2: reversed10000.txt
+
+real	0m0.003s
+user	0m0.003s
+sys	0m0.000s
+******
+running: sort2: reversed50000.txt
+
+real	0m0.014s
+user	0m0.014s
+sys	0m0.000s
+******
+running: sort2: reversed5000.txt
+
+real	0m0.002s
+user	0m0.001s
+sys	0m0.001s
+******
+running: sort2: sorted10000.txt
+
+real	0m0.005s
+user	0m0.004s
+sys	0m0.000s
+******
+running: sort2: sorted50000.txt
+
+real	0m0.015s
+user	0m0.013s
+sys	0m0.001s
+******
+running: sort2: sorted5000.txt
+
+real	0m0.003s
+user	0m0.001s
+sys	0m0.001s
+******
+running: sort3: random10000.txt
+
+real	0m0.108s
+user	0m0.106s
+sys	0m0.000s
+******
+running: sort3: random50000.txt
+
+real	0m2.772s
+user	0m2.723s
+sys	0m0.004s
+******
+running: sort3: random5000.txt
+
+real	0m0.027s
+user	0m0.026s
+sys	0m0.001s
+******
+running: sort3: reversed10000.txt
+
+real	0m0.126s
+user	0m0.123s
+sys	0m0.001s
+******
+running: sort3: reversed50000.txt
+
+real	0m2.655s
+user	0m2.621s
+sys	0m0.004s
+******
+running: sort3: reversed5000.txt
+
+real	0m0.028s
+user	0m0.027s
+sys	0m0.001s
+******
+running: sort3: sorted10000.txt
+
+real	0m0.104s
+user	0m0.104s
+sys	0m0.000s
+******
+running: sort3: sorted50000.txt
+
+real	0m2.682s
+user	0m2.556s
+sys	0m0.004s
+******
+running: sort3: sorted5000.txt
+
+real	0m0.033s
+user	0m0.030s
+sys	0m0.001s
+******
