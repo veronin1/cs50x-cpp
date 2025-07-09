@@ -19,7 +19,7 @@ void merge(std::vector<int> &left, std::vector<int> &right,
 
 int main(int argc, char *argv[]) {
   if (argc != 2) {
-    std::cout << "Usage: ./sort data/x.txt";
+    std::cout << "Usage: ./sort data/x.txt\n";
     return 1;
   }
 
