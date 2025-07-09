@@ -78,13 +78,14 @@ void bubbleSort(std::vector<int> &dataVect) {
 void selectionSort(std::vector<int> &dataVect) {
   int smallestValue = dataVect[0];
   int n = dataVect.size() - 1;
-  int index = 0;
 
   // find smallest value
-  for (int i = 0; i < n; i++) {
-    if (dataVect[i] < smallestValue) {
-      smallestValue = dataVect[i];
-      index = i;
+  for (int i = 0; i < n - 1; i++) {
+    int index = i;
+    for (int j = i + 1; j < n; j++) {
+      if (dataVect[j] < dataVect[index]) {
+        index = j;
+      }
     }
 
     int tmp = dataVect[index];
