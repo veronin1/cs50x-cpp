@@ -60,14 +60,14 @@ int main(int argc, char *argv[]) {
 }
 
 void bubbleSort(std::vector<int> &dataVect) {
-  int swapCounter = -1;
-  while (swapCounter != 0) {
-    swapCounter = 0;
+  bool swapped = true;
+  while (swapped) {
+    swapped = false;
 
     for (int i = 0, n = dataVect.size() - 1; i < n; i++) {
       if (dataVect[i] > dataVect[i + 1]) {
         std::swap(dataVect[i + 1], dataVect[i]);
-        ++swapCounter;
+        swapped = true;
       }
     }
   }
@@ -75,7 +75,7 @@ void bubbleSort(std::vector<int> &dataVect) {
 
 void selectionSort(std::vector<int> &dataVect) {
   int smallestValue = dataVect[0];
-  int n = dataVect.size() - 1;
+  int n = dataVect.size();
 
   for (int i = 0; i < n - 1; i++) {
     int index = i;
