@@ -21,15 +21,13 @@ int main(int argc, char *argv[]) {
   size_t num;
 
   std::ifstream data(argv[1]);
-
   std::vector<int> originalData;
 
   while (data >> num) {
-    originalData.push_back((num));
+    originalData.push_back(num);
   }
 
   std::vector<int> dataVect;
-
   std::chrono::high_resolution_clock::time_point start;
   std::chrono::high_resolution_clock::time_point end;
   std::chrono::duration<double> diff = end - start;
@@ -40,7 +38,6 @@ int main(int argc, char *argv[]) {
   bubbleSort(dataVect);
   end = std::chrono::high_resolution_clock::now();
   diff = end - start;
-
   std::cout << "Results for Bubble Sort: " << diff.count() << " seconds\n";
 
   // Selection Sort Timing
@@ -57,8 +54,9 @@ int main(int argc, char *argv[]) {
   mergeSort(dataVect);
   end = std::chrono::high_resolution_clock::now();
   diff = end - start;
-
   std::cout << "Results for Merge Sort: " << diff.count() << " seconds\n";
+
+  return 0;
 }
 
 void bubbleSort(std::vector<int> &dataVect) {
@@ -97,7 +95,7 @@ void mergeSort(std::vector<int> &dataVect) {
   }
   int split = dataVect.size() / 2;
   std::vector<int> left(split);
-  std::vector<int> right(split);
+  std::vector<int> right(dataVect.size() - split);
 
   for (int i = 0; i < split; i++) {
     left[i] = dataVect[i];
@@ -133,6 +131,6 @@ void merge(std::vector<int> &left, std::vector<int> &right,
   }
 
   for (int k = 0; k < merged.size(); k++) {
-    dataVect[i] = merged[i];
+    dataVect[k] = merged[k];
   }
 }
