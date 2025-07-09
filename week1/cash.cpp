@@ -5,10 +5,14 @@ int main(void) {
   int change = 0;
 
   // Get change from user
-  std::cout << "Change owed: ";
-  if (!(std::cin >> change)) {
-    std::cerr << "Invalid input. Enter a number.\n";
-    return 1;
+  while (true) {
+    std::cout << "Change owed (in cents): ";
+    if (std::cin >> change && change >= 0) {
+      break;
+    }
+    std::cin.clear();
+    std::cin.ignore(10000, '\n');
+    std::cout << "Invalid input. Please enter a non-negative integer.\n";
   }
 
   // Create array
