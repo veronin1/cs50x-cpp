@@ -7,6 +7,7 @@
 #include <fstream>
 #include <iostream>
 #include <ostream>
+#include <utility>
 #include <vector>
 
 void bubbleSort(std::vector<int> &dataVect);
@@ -65,10 +66,7 @@ void bubbleSort(std::vector<int> &dataVect) {
 
     for (int i = 0, n = dataVect.size() - 1; i < n; i++) {
       if (dataVect[i] > dataVect[i + 1]) {
-        int tmp;
-        tmp = dataVect[i + 1];
-        dataVect[i + 1] = dataVect[i];
-        dataVect[i] = tmp;
+        std::swap(dataVect[i + 1], dataVect[i]);
         ++swapCounter;
       }
     }
@@ -88,9 +86,7 @@ void selectionSort(std::vector<int> &dataVect) {
       }
     }
 
-    int tmp = dataVect[index];
-    dataVect[index] = dataVect[i];
-    dataVect[i] = tmp;
+    std::swap(dataVect[index], dataVect[i]);
   }
 }
 
