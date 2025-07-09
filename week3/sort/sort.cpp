@@ -5,7 +5,10 @@
 
 #include <fstream>
 #include <iostream>
+#include <ostream>
 #include <vector>
+
+void bubbleSort(std::vector<int> &dataVect);
 
 int main(int argc, char *argv[]) {
   size_t num;
@@ -17,6 +20,12 @@ int main(int argc, char *argv[]) {
   while (data >> num) {
     dataVect.push_back((num));
   }
+
+  bubbleSort(dataVect);
+
+  for (int i = 0, n = dataVect.size(); i < n; i++) {
+    std::cout << dataVect[i] << std::endl;
+  }
 }
 
 void bubbleSort(std::vector<int> &dataVect) {
@@ -27,7 +36,7 @@ void bubbleSort(std::vector<int> &dataVect) {
     for (int i = 0, n = dataVect.size() - 1; i < n; i++) {
       if (dataVect[i] > dataVect[i + 1]) {
         int tmp;
-        tmp = dataVect[i];
+        tmp = dataVect[i + 1];
         dataVect[i + 1] = dataVect[i];
         dataVect[i] = tmp;
         ++swapCounter;
