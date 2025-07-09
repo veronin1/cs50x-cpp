@@ -107,16 +107,14 @@ void mergeSort(std::vector<int> &dataVect) {
 }
 
 void merge(std::vector<int> &left, std::vector<int> &right) {
-  int left_idx = 0;
-  int right_idx = 0;
   std::vector<int> merged;
-  for (int i = 0, n = left.size(); i > n; i++) {
-    if (left[left_idx] > right[right_idx]) {
-      merged.push_back(left[left_idx]);
-      left_idx++;
+  int i = 0, j = 0;
+
+  while (i < left.size() && j < right.size()) {
+    if (left[i] > right[j]) {
+      merged.push_back(left[i++]);
     } else {
-      merged.push_back(right[right_idx]);
-      right_idx++;
+      merged.push_back(right[j++]);
     }
   }
 }
