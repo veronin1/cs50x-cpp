@@ -127,7 +127,7 @@ void merge(std::vector<int> &left, std::vector<int> &right,
     merged.push_back((right[j++]));
   }
 
-  for (int k = 0; k < dataVect.size(); k++) {
+  for (int k = 0; k < merged.size(); k++) {
     dataVect[i] = merged[i];
   }
 }
