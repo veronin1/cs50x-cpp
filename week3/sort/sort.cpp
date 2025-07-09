@@ -75,6 +75,22 @@ void bubbleSort(std::vector<int> &dataVect) {
   }
 }
 
-void selectionSort(std::vector<int> &dataVect) {}
+void selectionSort(std::vector<int> &dataVect) {
+  int smallestValue = dataVect[0];
+  int n = dataVect.size() - 1;
+  int index = 0;
+
+  // find smallest value
+  for (int i = 0; i < n; i++) {
+    if (dataVect[i] < smallestValue) {
+      smallestValue = dataVect[i];
+      index = i;
+    }
+
+    int tmp = dataVect[index];
+    dataVect[index] = dataVect[i];
+    dataVect[i] = tmp;
+  }
+}
 
 void mergeSort(std::vector<int> &dataVect) {}
