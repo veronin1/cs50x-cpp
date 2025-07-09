@@ -32,6 +32,7 @@ int main(int argc, char *argv[]) {
   start = std::chrono::high_resolution_clock::now();
   bubbleSort(dataVect);
   end = std::chrono::high_resolution_clock::now();
+  diff = end - start;
 
   std::cout << "Results for Bubble Sort: " << diff.count() << " seconds\n";
 
@@ -39,13 +40,14 @@ int main(int argc, char *argv[]) {
   start = std::chrono::high_resolution_clock::now();
   selectionSort(dataVect);
   end = std::chrono::high_resolution_clock::now();
-
+  diff = end - start;
   std::cout << "Results for Selection Sort: " << diff.count() << " seconds\n";
 
   // Merge Sort Timing
   start = std::chrono::high_resolution_clock::now();
   mergeSort(dataVect);
   end = std::chrono::high_resolution_clock::now();
+  diff = end - start;
 
   std::cout << "Results for Merge Sort: " << diff.count() << " seconds\n";
 
