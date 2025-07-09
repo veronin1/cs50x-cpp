@@ -18,6 +18,11 @@ void merge(std::vector<int> &left, std::vector<int> &right,
            std::vector<int> &dataVect);
 
 int main(int argc, char *argv[]) {
+  if (argc != 2) {
+    std::cout << "Usage: ./sort data/x.txt";
+    return 1;
+  }
+
   size_t num;
 
   std::ifstream data(argv[1]);
@@ -74,7 +79,6 @@ void bubbleSort(std::vector<int> &dataVect) {
 }
 
 void selectionSort(std::vector<int> &dataVect) {
-  int smallestValue = dataVect[0];
   int n = dataVect.size();
 
   for (int i = 0; i < n - 1; i++) {
@@ -113,7 +117,7 @@ void mergeSort(std::vector<int> &dataVect) {
 void merge(std::vector<int> &left, std::vector<int> &right,
            std::vector<int> &dataVect) {
   std::vector<int> merged;
-  int i = 0, j = 0;
+  size_t i = 0, j = 0;
 
   while (i < left.size() && j < right.size()) {
     if (left[i] < right[j]) {
@@ -130,7 +134,7 @@ void merge(std::vector<int> &left, std::vector<int> &right,
     merged.push_back((right[j++]));
   }
 
-  for (int k = 0; k < merged.size(); k++) {
+  for (size_t k = 0; k < merged.size(); k++) {
     dataVect[k] = merged[k];
   }
 }
