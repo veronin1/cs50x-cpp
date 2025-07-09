@@ -19,7 +19,22 @@ int main(int argc, char *argv[]) {
   }
 }
 
-void bubbleSort(std::pmr::vector<int> &dataVect) { return; }
+void bubbleSort(std::vector<int> &dataVect) {
+  int swapCounter = -1;
+  while (swapCounter != 0) {
+    swapCounter = 0;
+
+    for (int i = 0, n = dataVect.size() - 1; i < n; i++) {
+      if (dataVect[i] > dataVect[i + 1]) {
+        int tmp;
+        tmp = dataVect[i];
+        dataVect[i + 1] = dataVect[i];
+        dataVect[i] = tmp;
+        ++swapCounter;
+      }
+    }
+  }
+}
 
 void selectionSort() {}
 
