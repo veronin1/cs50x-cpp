@@ -22,17 +22,20 @@ int main(int argc, char *argv[]) {
 
   std::ifstream data(argv[1]);
 
-  std::vector<int> dataVect;
+  std::vector<int> originalData;
 
   while (data >> num) {
-    dataVect.push_back((num));
+    originalData.push_back((num));
   }
+
+  std::vector<int> dataVect;
 
   std::chrono::high_resolution_clock::time_point start;
   std::chrono::high_resolution_clock::time_point end;
   std::chrono::duration<double> diff = end - start;
 
   // Bubble Sort Timing
+  dataVect = originalData;
   start = std::chrono::high_resolution_clock::now();
   bubbleSort(dataVect);
   end = std::chrono::high_resolution_clock::now();
@@ -41,6 +44,7 @@ int main(int argc, char *argv[]) {
   std::cout << "Results for Bubble Sort: " << diff.count() << " seconds\n";
 
   // Selection Sort Timing
+  dataVect = originalData;
   start = std::chrono::high_resolution_clock::now();
   selectionSort(dataVect);
   end = std::chrono::high_resolution_clock::now();
@@ -48,6 +52,7 @@ int main(int argc, char *argv[]) {
   std::cout << "Results for Selection Sort: " << diff.count() << " seconds\n";
 
   // Merge Sort Timing
+  dataVect = originalData;
   start = std::chrono::high_resolution_clock::now();
   mergeSort(dataVect);
   end = std::chrono::high_resolution_clock::now();
