@@ -116,7 +116,7 @@ void merge(std::vector<int> &left, std::vector<int> &right,
   int i = 0, j = 0;
 
   while (i < left.size() && j < right.size()) {
-    if (left[i] > right[j]) {
+    if (left[i] < right[j]) {
       merged.push_back(left[i++]);
     } else {
       merged.push_back(right[j++]);
