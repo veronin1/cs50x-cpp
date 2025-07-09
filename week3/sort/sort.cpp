@@ -37,14 +37,14 @@ int main(int argc, char *argv[]) {
 
   // Selection Sort Timing
   start = std::chrono::high_resolution_clock::now();
-  selectionSort(&dataVect);
+  selectionSort(dataVect);
   end = std::chrono::high_resolution_clock::now();
 
   std::cout << "Results for Selection Sort: " << diff.count() << " seconds\n";
 
   // Merge Sort Timing
   start = std::chrono::high_resolution_clock::now();
-  mergeSort(&dataVect);
+  mergeSort(dataVect);
   end = std::chrono::high_resolution_clock::now();
 
   std::cout << "Results for Merge Sort: " << diff.count() << " seconds\n";
