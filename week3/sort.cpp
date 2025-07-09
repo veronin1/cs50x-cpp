@@ -7,10 +7,10 @@
 #include <iostream>
 #include <vector>
 
-int main(void) {
+int main(int argc, char *argv[]) {
   size_t num;
 
-  std::ifstream data("unsorted50000.txt");
+  std::ifstream data(argv[1]);
 
   std::vector<int> dataVect;
 
