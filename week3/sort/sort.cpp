@@ -14,7 +14,8 @@
 void bubbleSort(std::vector<int> &dataVect);
 void selectionSort(std::vector<int> &dataVect);
 void mergeSort(std::vector<int> &dataVect);
-void merge(std::vector<int> &left, std::vector<int> &right);
+void merge(std::vector<int> &left, std::vector<int> &right,
+           std::vector<int> &dataVect);
 
 int main(int argc, char *argv[]) {
   size_t num;
@@ -103,10 +104,11 @@ void mergeSort(std::vector<int> &dataVect) {
   mergeSort(left);
   mergeSort(right);
 
-  merge(left, right);
+  merge(left, right, dataVect);
 }
 
-void merge(std::vector<int> &left, std::vector<int> &right) {
+void merge(std::vector<int> &left, std::vector<int> &right,
+           std::vector<int> &dataVect) {
   std::vector<int> merged;
   int i = 0, j = 0;
 
@@ -118,10 +120,14 @@ void merge(std::vector<int> &left, std::vector<int> &right) {
     }
   }
 
-  while (i > left.size()) {
+  while (i < left.size()) {
     merged.push_back((left[i++]));
   }
-  while (j > right.size()) {
+  while (j < right.size()) {
     merged.push_back((right[j++]));
+  }
+
+  for (int k = 0; k < dataVect.size(); k++) {
+    dataVect[i] = merged[i];
   }
 }
