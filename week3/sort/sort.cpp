@@ -3,12 +3,15 @@
  * of data (sorted list of 50000 elements, unsorted list of 1000 elements etc).
  * The 3 possible sorts were: Bubble, Selection and Merge */
 
+#include <chrono>
 #include <fstream>
 #include <iostream>
 #include <ostream>
 #include <vector>
 
 void bubbleSort(std::vector<int> &dataVect);
+void selectionSort(std::vector<int> &dataVect);
+void mergeSort(std::vector<int> &dataVect);
 
 int main(int argc, char *argv[]) {
   size_t num;
@@ -21,11 +24,36 @@ int main(int argc, char *argv[]) {
     dataVect.push_back((num));
   }
 
-  bubbleSort(dataVect);
+  std::chrono::high_resolution_clock::time_point start;
+  std::chrono::high_resolution_clock::time_point end;
+  std::chrono::duration<double> diff = end - start;
 
-  for (int i = 0, n = dataVect.size(); i < n; i++) {
-    std::cout << dataVect[i] << std::endl;
-  }
+  // Bubble Sort Timing
+  start = std::chrono::high_resolution_clock::now();
+  bubbleSort(dataVect);
+  end = std::chrono::high_resolution_clock::now();
+
+  std::cout << "Results for Bubble Sort: " << diff.count() << " seconds\n";
+
+  // Selection Sort Timing
+  start = std::chrono::high_resolution_clock::now();
+  selectionSort(&dataVect);
+  end = std::chrono::high_resolution_clock::now();
+
+  std::cout << "Results for Selection Sort: " << diff.count() << " seconds\n";
+
+  // Merge Sort Timing
+  start = std::chrono::high_resolution_clock::now();
+  mergeSort(&dataVect);
+  end = std::chrono::high_resolution_clock::now();
+
+  std::cout << "Results for Merge Sort: " << diff.count() << " seconds\n";
+
+  /*
+for (int i = 0, n = dataVect.size(); i < n; i++) {
+std::cout << dataVect[i] << std::endl;
+}
+*/
 }
 
 void bubbleSort(std::vector<int> &dataVect) {
@@ -45,6 +73,6 @@ void bubbleSort(std::vector<int> &dataVect) {
   }
 }
 
-void selectionSort() {}
+void selectionSort(std::vector<int> &dataVect) {}
 
-void mergeSort() {}
+void mergeSort(std::vector<int> &dataVect) {}
