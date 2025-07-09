@@ -3,6 +3,7 @@
  * of data (sorted list of 50000 elements, unsorted list of 1000 elements etc).
  * The 3 possible sorts were: Bubble, Selection and Merge */
 
+#include <algorithm>
 #include <chrono>
 #include <fstream>
 #include <iostream>
@@ -51,12 +52,6 @@ int main(int argc, char *argv[]) {
   diff = end - start;
 
   std::cout << "Results for Merge Sort: " << diff.count() << " seconds\n";
-
-  /*
-for (int i = 0, n = dataVect.size(); i < n; i++) {
-std::cout << dataVect[i] << std::endl;
-}
-*/
 }
 
 void bubbleSort(std::vector<int> &dataVect) {
@@ -77,7 +72,6 @@ void selectionSort(std::vector<int> &dataVect) {
   int smallestValue = dataVect[0];
   int n = dataVect.size() - 1;
 
-  // find smallest value
   for (int i = 0; i < n - 1; i++) {
     int index = i;
     for (int j = i + 1; j < n; j++) {
@@ -90,4 +84,21 @@ void selectionSort(std::vector<int> &dataVect) {
   }
 }
 
-void mergeSort(std::vector<int> &dataVect) {}
+void mergeSort(std::vector<int> &dataVect) {
+  if (dataVect.size() <= 1) {
+    return;
+  }
+  int split = dataVect.size() / 2;
+  std::vector<int> left(split);
+  std::vector<int> right(split);
+
+  for (int i = 0; i < split; i++) {
+    left[i] = dataVect[i];
+  }
+  for (int i = split, n = dataVect.size(); i < n; i++) {
+    right[i - split] = dataVect[i];
+  }
+
+  mergeSort(left);
+  mergeSort(right);
+}
