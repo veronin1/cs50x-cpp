@@ -142,6 +142,15 @@ bool print_winner(void) {
   return false;
 }
 
-int find_min(void);
+int find_min(void) {
+  size_t min = candidates[0].getVotes();
+  for (Candidate &c : candidates) {
+    if (min < c.getVotes()) {
+      min = c.getVotes();
+    }
+  }
+  return min;
+}
+
 bool is_tie(int min);
 void eliminate(int min);
