@@ -19,3 +19,4 @@ add_executable(caesar src/week2/caesar/caesar.cpp)
 
 # Week 3
 add_executable(sort src/week3/sort/sort.cpp)
+add_executable(plurality src/week3/plurality/plurality.cpp)
