@@ -57,4 +57,12 @@ int main(int argc, char* argv[]) {
   }
 }
 
-bool vote(std::string name) {}
+bool vote(std::string name) {
+  for (Candidate& c : candidates) {
+    if (c.getName() == name) {
+      c.incrementVotes();
+      return true;
+    }
+  }
+  return false;
+}
