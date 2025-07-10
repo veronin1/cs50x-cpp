@@ -126,7 +126,22 @@ void tabulate(void) {
     }
   }
 }
-bool print_winner(void);
+
+bool print_winner(void) {
+  size_t totalVotes = 0;
+  for (Candidate &c : candidates) {
+    totalVotes += c.getVotes();
+  }
+
+  for (Candidate &c : candidates) {
+    if (c.getVotes() > (totalVotes / 2.0)) {
+      std::cout << c.getName();
+      return true;
+    }
+  }
+  return false;
+}
+
 int find_min(void);
 bool is_tie(int min);
 void eliminate(int min);
