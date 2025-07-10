@@ -39,10 +39,7 @@ int main(int argc, char* argv[]) {
   }
 
   for (int i = 1; i < argc; ++i) {
-    Candidate newCand;
-
-    newCand.setName(argv[i]);
-    candidates.push_back(newCand);
+    candidates.emplace_back(argv[i]);
   }
 
   int voterCount;
