@@ -18,7 +18,7 @@ class Candidate {
   std::string getName() const { return name; }
   void setName(const std::string& name) { this->name = name; }
 
-  int getVotes() const { return votes; }
+  size_t getVotes() const { return votes; }
   void incrementVotes() { ++votes; }
 };
 
