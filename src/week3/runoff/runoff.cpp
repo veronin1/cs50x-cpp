@@ -1,5 +1,6 @@
 #include <cstddef>
 #include <iostream>
+#include <limits>
 #include <string>
 #include <vector>
 
@@ -32,10 +33,12 @@ std::vector<Candidate> candidates;
 std::vector<std::vector<int>> preferences(MAX_VOTERS,
                                           std::vector<int>(MAX_CANDIDATES));
 
-bool vote(int voter, int rank, std::string name);
+size_t voterCount = 0;
+
+bool vote(int voter, int rank, const std::string &name);
 void tabulate(void);
 bool print_winner(void);
-int find_min(void);
+size_t find_min(void);
 bool is_tie(int min);
 void eliminate(int min);
 
@@ -54,26 +57,25 @@ int main(int argc, char *argv[]) {
     candidates.emplace_back(argv[i]);
   }
 
-  size_t voterCount;
   std::cout << "Number of voters: " << std::flush;
   std::cin >> voterCount;
   if (voterCount > MAX_VOTERS) {
-    std::cout << "Maximum number of voters is" << MAX_VOTERS << '\n';
+    std::cout << "Maximum number of voters is " << MAX_VOTERS << '\n';
     return 3;
   }
+
+  std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
   for (int i = 0; i < voterCount; i++) {
     for (int j = 0; j < candidates.size(); j++) {
       std::string name;
-      std::cout << "Rank " << j + 1 << ": " << std::endl;
+      std::cout << "Rank " << j + 1 << ": ";
       std::getline(std::cin, name);
 
       if (!vote(i, j, name)) {
         throw std::runtime_error("Invalid vote for candidate: " + name);
-        return 4;
       }
     }
-
     std::cout << std::endl;
   }
 
@@ -91,16 +93,18 @@ int main(int argc, char *argv[]) {
     if (tie) {
       for (Candidate &c : candidates) {
         if (!c.isEliminated()) {
-          std::cout << c.getName();
+          std::cout << c.getName() << std::endl;
         }
       }
       break;
+    } else {
+      eliminate(min);
     }
   }
   return 0;
 }
 
-bool vote(int voter, int rank, std::string &name) {
+bool vote(int voter, int rank, const std::string &name) {
   for (size_t i = 0; i < candidates.size(); ++i) {
     if (candidates[i].getName() == name) {
       preferences[voter][rank] = i;
@@ -115,8 +119,8 @@ void tabulate(void) {
     c.resetVotes();
   }
 
-  for (size_t voter; voter < preferences.size(); ++voter) {
-    for (size_t rank; rank < candidates.size(); ++rank) {
+  for (size_t voter = 0; voter < voterCount; ++voter) {
+    for (size_t rank = 0; rank < candidates.size(); ++rank) {
       int candidateIndex = preferences[voter][rank];
 
       if (!candidates[candidateIndex].isEliminated()) {
@@ -135,17 +139,17 @@ bool print_winner(void) {
 
   for (Candidate &c : candidates) {
     if (c.getVotes() > (totalVotes / 2.0)) {
-      std::cout << c.getName();
+      std::cout << c.getName() << '\n';
       return true;
     }
   }
   return false;
 }
 
-int find_min(void) {
-  size_t min = candidates[0].getVotes();
+size_t find_min(void) {
+  size_t min = std::numeric_limits<size_t>::max();
   for (Candidate &c : candidates) {
-    if (min < c.getVotes()) {
+    if (!c.isEliminated() && c.getVotes() < min) {
       min = c.getVotes();
     }
   }
