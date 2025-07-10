@@ -25,6 +25,7 @@ class Candidate {
 std::vector<Candidate> candidates;
 
 bool vote(std::string name);
+void printWinner();
 
 int main(int argc, char* argv[]) {
   if (argc < 2) {
@@ -44,7 +45,7 @@ int main(int argc, char* argv[]) {
   }
 
   int voterCount;
-  std::cout << "Number of voters:";
+  std::cout << "Number of voters: ";
   std::cin >> voterCount;
 
   for (int i = 0; i < voterCount; ++i) {
@@ -56,6 +57,8 @@ int main(int argc, char* argv[]) {
       std::cout << "Invalid vote\n";
     }
   }
+
+  printWinner();
 }
 
 bool vote(std::string name) {
@@ -78,7 +81,7 @@ void printWinner() {
 
   for (Candidate& c : candidates) {
     if (c.getVotes() == maxVotes) {
-      std::cout << c.getName();
+      std::cout << c.getName() << std::endl;
     }
   }
 }
