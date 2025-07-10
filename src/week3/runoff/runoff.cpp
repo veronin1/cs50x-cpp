@@ -100,7 +100,16 @@ int main(int argc, char *argv[]) {
   return 0;
 }
 
-bool vote(int voter, int rank, std::string name);
+bool vote(int voter, int rank, std::string &name) {
+  for (size_t i = 0; i < candidates.size(); ++i) {
+    if (candidates[i].getName() == name) {
+      preferences[voter][rank] = i;
+      return true;
+    }
+  }
+  return false;
+}
+
 void tabulate(void);
 bool print_winner(void);
 int find_min(void);
