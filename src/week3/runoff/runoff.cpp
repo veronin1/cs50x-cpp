@@ -152,5 +152,12 @@ int find_min(void) {
   return min;
 }
 
-bool is_tie(int min);
+bool is_tie(int min) {
+  for (Candidate &c : candidates) {
+    if (!c.isEliminated() && c.getVotes() != min) {
+      return false;
+    }
+  }
+  return true;
+}
 void eliminate(int min);
