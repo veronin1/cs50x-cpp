@@ -1,3 +1,4 @@
+#include <cstddef>
 #include <iostream>
 #include <ostream>
 #include <string>
@@ -8,7 +9,7 @@
 class Candidate {
  private:
   std::string name;
-  int votes;
+  size_t votes;
 
  public:
   Candidate() : name(""), votes(0) {}
@@ -65,4 +66,19 @@ bool vote(std::string name) {
     }
   }
   return false;
+}
+
+void printWinner() {
+  size_t maxVotes = 0;
+  for (Candidate& c : candidates) {
+    if (c.getVotes() > maxVotes) {
+      maxVotes = c.getVotes();
+    }
+  }
+
+  for (Candidate& c : candidates) {
+    if (c.getVotes() == maxVotes) {
+      std::cout << c.getName();
+    }
+  }
 }
