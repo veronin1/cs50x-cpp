@@ -16,7 +16,7 @@ class Candidate {
   Candidate(std::string name) : name(name), votes(0) {}
 
   std::string getName() const { return name; }
-  void setName(std::string name) { this->name = name; }
+  void setName(const std::string& name) { this->name = name; }
 
   int getVotes() const { return votes; }
   void incrementVotes() { ++votes; }
@@ -24,7 +24,7 @@ class Candidate {
 
 std::vector<Candidate> candidates;
 
-bool vote(std::string name);
+bool vote(std::string& name);
 void printWinner();
 
 int main(int argc, char* argv[]) {
@@ -33,8 +33,9 @@ int main(int argc, char* argv[]) {
     return 1;
   }
 
-  if (candidates.size() > MAX) {
+  if (argc - 1 > MAX) {
     std::cout << "Maximum number of candidates is " << MAX << std::endl;
+    return 1;
   }
 
   for (int i = 1; i < argc; ++i) {
@@ -61,7 +62,7 @@ int main(int argc, char* argv[]) {
   printWinner();
 }
 
-bool vote(std::string name) {
+bool vote(std::string& name) {
   for (Candidate& c : candidates) {
     if (c.getName() == name) {
       c.incrementVotes();
