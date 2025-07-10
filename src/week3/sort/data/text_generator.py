@@ -1,9 +1,9 @@
 import random
 
 # Set the number of unique random numbers
-total_numbers = 10_000_000
+total_numbers = 100_000_000
 
-# Generate a list of numbers from 1 to 300,000
+# Generate a list of numbers from 1 to X
 numbers = list(range(1, total_numbers + 1))
 
 # Shuffle the list randomly
