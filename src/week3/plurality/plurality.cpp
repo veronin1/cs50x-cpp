@@ -45,12 +45,12 @@ int main(int argc, char* argv[]) {
   }
 
   int voterCount;
-  std::cout << "Number of voters: ";
+  std::cout << "Number of voters: " << std::flush;
   std::cin >> voterCount;
 
   for (int i = 0; i < voterCount; ++i) {
     std::string name;
-    std::cout << "Vote: ";
+    std::cout << "Vote: " << std::flush;
     std::cin >> name;
 
     if (!vote(name)) {
