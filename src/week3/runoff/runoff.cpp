@@ -110,7 +110,22 @@ bool vote(int voter, int rank, std::string &name) {
   return false;
 }
 
-void tabulate(void);
+void tabulate(void) {
+  for (Candidate &c : candidates) {
+    c.resetVotes();
+  }
+
+  for (size_t voter; voter < preferences.size(); ++voter) {
+    for (size_t rank; rank < candidates.size(); ++rank) {
+      int candidateIndex = preferences[voter][rank];
+
+      if (!candidates[candidateIndex].isEliminated()) {
+        candidates[candidateIndex].incrementVotes();
+        break;
+      }
+    }
+  }
+}
 bool print_winner(void);
 int find_min(void);
 bool is_tie(int min);
