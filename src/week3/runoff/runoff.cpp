@@ -160,4 +160,12 @@ bool is_tie(int min) {
   }
   return true;
 }
-void eliminate(int min);
+
+void eliminate(int min) {
+  for (Candidate &c : candidates) {
+    if (c.getVotes() == min) {
+      c.setEliminated(true);
+    }
+  }
+  return;
+}
