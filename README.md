@@ -47,6 +47,9 @@ Make sure to provide the full path considering the position of the build folder:
 
 Files can still be compiled manually via the compiler of your choosing
 
+## Note
+These are my personal submissions to CS50, for educational purposes only.
+
 ```sh
 g++ week1/mario-less.cpp -o mario-less
 ./mario-less
